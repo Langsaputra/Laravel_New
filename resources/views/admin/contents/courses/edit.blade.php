@@ -34,11 +34,6 @@
                         <input type="text" name="category" id="category" class="form-control" value="{{ $courses->desc ?? ''}}">
                     </div>
 
-                    <div class="mb-2">
-                        <label for="class" class="form-label">Class</label>
-                        <input type="text" name="class" id="class" class="form-control" value="{{ $courses->class ?? ''}}">
-                    </div>
-
                     <div class="mb-4">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>

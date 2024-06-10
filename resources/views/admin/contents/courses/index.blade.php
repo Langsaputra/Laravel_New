@@ -25,21 +25,19 @@
                         <th>Nama</th>
                         <th>Category</th>
                         <th>Desc</th>
-                        <th>class</th>
-                        <th>action</th>
+                        <th>Action</th>
                     </tr>
 
-                    @foreach ($courses as $courses)
+                    @foreach ($courses as $course)
 
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $courses->name }}</td>
-                        <td>{{ $courses->category }}</td>
-                        <td>{{ $courses->desc }}</td>
-                        <td>{{ $courses->class }}</td>
+                        <td>{{ $course->name }}</td>
+                        <td>{{ $course->category }}</td>
+                        <td>{{ $course->desc }}</td>
                         <td>
-                          <a href="{{ route('courses.edit', $courses->id) }}" class="btn btn-warning m-2">Edit</a>
-                          <form action="/admin/courses/delete/{{ $courses->id }}" method="POST">
+                          <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning m-2">Edit</a>
+                          <form action="/admin/courses/delete/{{ $course->id }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" type="submit" onclick="retrun confrim('Apakah anda yakin?')">Hapus</button>

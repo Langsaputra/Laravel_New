@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Courses;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -19,7 +21,15 @@ class StudentController extends Controller
     }
 
     public function create(){
-        return view('admin.contents.student.create');
+        
+        // dapatkan data courses dari database
+        $courses = Courses::all();
+        return view('admin.contents.student.create',
+        [
+            'courses' => $courses
+        ]
+    );
+
     }
 
     // method untuk menangkap student
@@ -29,7 +39,8 @@ class StudentController extends Controller
             'name' => 'required',
             'nim' => 'required|numeric',
             'major' => 'required',
-            'class' => 'required'
+            'class' => 'required',
+            'course_id' => 'nullable|numeric',
 
         ]);
 
@@ -37,7 +48,8 @@ class StudentController extends Controller
             'name' => $request->name,
             'nim' => $request->nim,
             'major' => $request->major,
-            'class' => $request->class
+            'class' => $request->class,
+            'course_id' => $request->course_id
         ]);
 
         return redirect('/admin/student')->with('pesan', 'data masuk');
@@ -63,7 +75,6 @@ class StudentController extends Controller
             'name' => 'required',
             'nim' => 'required|numeric',
             'major' => 'required',
-            'class' => 'required'
 
         ]);
 
@@ -71,7 +82,6 @@ class StudentController extends Controller
             'name' => $request->name,
             'nim' => $request->nim,
             'major' => $request->major,
-            'class' => $request->class,
 
         ]);
 
@@ -86,4 +96,5 @@ class StudentController extends Controller
 
         return redirect('/admin/student')->with('pesan', 'data sudah teredit');
     }
+
 }

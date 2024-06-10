@@ -17,7 +17,7 @@
   <section class="section">
     <div class="card">
         <div class="card-body">
-            <a href="/admin/student/create" class="btn btn-primary m-3">+ Student</a>
+            <a href="/admin/student/create" class="btn btn-primary m-3">Tambah Student</a>
             <div class="table-responsive">
                 <table class="table">
                     <tr>
@@ -25,8 +25,9 @@
                         <th>Nama</th>
                         <th>Nim</th>
                         <th>Major</th>
-                        <th>class</th>
-                        <th>action</th>
+                        <th>Class</th>
+                        <th>Course</th>
+                        <th>Action</th>
                     </tr>
 
                     @foreach ($students as $student)
@@ -37,6 +38,7 @@
                         <td>{{ $student->nim }}</td>
                         <td>{{ $student->major }}</td>
                         <td>{{ $student->class }}</td>
+                        <td>{!! $student->course_id ?? '<span class="badge bg-danger"> Belum mengikuti Course</span>' !!}  </td>
                         <td class="d-flex">
                             <a href="{{ route('student.edit', $student->id) }}" class="btn btn-warning me-2">Edit</a>
                             <form action="/admin/student/delete/{{ $student->id }}" method="POST">

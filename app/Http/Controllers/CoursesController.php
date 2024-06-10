@@ -28,15 +28,12 @@ class CoursesController extends Controller
             'name' => 'required',
             'category' => 'required',
             'desc' => 'required',
-            'class' => 'required'
-
         ]);
 
         Courses::create([
             'name' => $request->name,
             'category' => $request->category,
             'desc' => $request->desc,
-            'class' => $request->class
         ]);
 
         return redirect('/admin/courses')->with('pesan', 'data masuk');
@@ -70,7 +67,6 @@ class CoursesController extends Controller
             'name' => $request->name,
             'category' => $request->category,
             'desc' => $request->desc,
-            'class' => $request->class,
 
         ]);
 
